@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/style.css">
+  <title>Document</title>
+  <script src="calculator.js"></script>
+</head>
+<body class="bg13">
+  <div class="container">
+    <div class="calc__wrapper">
+      <div class="calc bg9">
+        <h1 class="calc__title c4">calculator</h1>
+        <div class="calc__interface ">
+          <input 
+            type="tel"
+            class="calc__input"
+            id="input"
+            value="0"
+            />
+          <div class="calc__nums">
+            <button class="calc__btn">1</button>
+            <button class="calc__btn">2</button>
+            <button class="calc__btn">3</button>
+            <button class="calc__btn">4</button>
+            <button class="calc__btn">5</button>
+            <button class="calc__btn">6</button>
+            <button class="calc__btn">7</button>
+            <button class="calc__btn">8</button>
+            <button class="calc__btn">9</button>
+            <button class="calc__btn w-2" data-val='{"json": 0}' >0</button>
+            <button class="calc__btn" data-val='{"json":"."}' >.</button>
+          </div>
+          <div class="calc__doings">
+            <button id='add' data-val='{"json":"+"}' class="calc__btn">+</button>
+            <button id='minus' data-val='{"json":"-"}' class="calc__btn">-</button>
+            <button id='multiple' data-val='{"json":"×"}' class="calc__btn">×</button>
+            <button id='divide' data-val='{"json":"÷"}' class="calc__btn">÷</button>
+            <button id="result" data-val='{"json":"="}' class="calc__btn">=</button>
+          </div>
+          <div class="calc__res">
+            <button data-val='{"json": "+/-"}' class="calc__btn">+/-</button>
+            <button data-val='{"json": "%"}' class="calc__btn">%</button>
+            <button data-val='{"json": "AC"}' class="calc__btn">AC</button>
+          </div>
+        </div>
+        <input 
+          type="tel"
+          class="calc__output"
+          disabled
+          id="output"
+          />
+      </div>
+    </div>
+  </div>
+  <script>
+    for (let i = 0; i < 9; i++) {
+      document.getElementsByClassName("calc__btn")[i]
+      .setAttribute(`data-val`, `{"json": ${i + 1}}`);
+    }
+
+    let input = document.getElementById('input');
+    let output = document.getElementById('output');
+    let calcInterface = document.querySelector('.calc__interface')
+
+    calcInterface.addEventListener('click', new Calculator(input, output))
+
+  </script>
+</body>
+</html>
